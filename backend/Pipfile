@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 pytest = "*"
 django = "*"
+pymongo = "*"
+dnspython = "*"
+pytz = "*"
 
 [dev-packages]
 
