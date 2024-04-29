@@ -16,7 +16,6 @@ def get_db_handle(db_name, host, port, username, password):
     db_handle = client[db_name]
     return db_handle, client
 
-@csrf_exempt
 def create_token(request):
     if request.method == 'POST':
         data = json.loads(request.body)
