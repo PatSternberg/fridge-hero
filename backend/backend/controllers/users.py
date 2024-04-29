@@ -109,9 +109,8 @@ def signup(request): # Disables CSRF protection for this view
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
 
-
-@csrf_exempt
 def login(request):
+    print('Getting this far')
     if request.method == 'POST':
         data = json.loads(request.body)
         email = data.get('email')
@@ -144,7 +143,9 @@ def login(request):
             client.close()
 
             # Return token along with user_id
-            return JsonResponse({'message': 'Login successful', 'user_id': str(user['_id']), 'token': token}, status=200)
+            response = JsonResponse({'message': 'Login successful', 'user_id': str(user['_id'])}, status=200)
+            # response['authorization'] = f'Bearer {token}'
+            return response
         except Exception as e:
             return JsonResponse({'error': f'Something went wrong: {str(e)}'}, status=500)
     else:

@@ -1,7 +1,6 @@
 .home-container {
   display: flex;
-  height: 84vh;
-  font-family: 'Garamond', sans-serif;
+  height: 80vh + 20px;
   justify-content: center; /* Aligns items horizontally */
   align-items: center; /* Aligns items vertically */
 }
@@ -193,4 +192,11 @@
   font-family: 'Open Sans', sans-serif;
   font-weight: 550 ;
   color: red;
+}
+
+.copyright {
+  height: 20px;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 90%;
 }

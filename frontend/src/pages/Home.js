@@ -58,6 +58,9 @@ export default function Home() {
           {componentToRender}
         </div>
       </div>
+      <div className='copyright'>
+        <p>©2024: Bogdan, Hayri, Kevin, Patrick, Sam</p>
+      </div>
       <div style={{ width: '100vw', height: '8vh', backgroundColor: 'var(--primary-color)', borderTopColor: 'black', borderTopWidth: '2px', borderTopStyle: 'solid' }}></div>
     </div>
   )

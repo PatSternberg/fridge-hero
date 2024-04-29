@@ -4,4 +4,10 @@
   --primary-color: tomato;
   --secondary-color: orange;
   height: 100%;
+  font-family: 'Garamond', sans-serif;
+}
+
+@font-face {
+  font-family: 'Bangers';
+  src: local('Bangers'), url(../public/Bangers.ttf) format('opentype');
 }

@@ -9,6 +9,7 @@ class AuthenticationMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        print('Middleware is running')
         # Extract token from Authorization header
         token_string = request.headers.get('Authorization', '')[7:]
 

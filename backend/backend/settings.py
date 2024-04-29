@@ -49,14 +49,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware'
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -80,6 +80,13 @@ TEMPLATES = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
+
+CSRF_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+]
+
+# Ensure CSRF_COOKIE_NAME matches the name used in your frontend (default is 'csrftoken')
+CSRF_COOKIE_NAME = 'csrftoken'
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
@@ -117,12 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# CORS settings
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',  # Add your frontend URL here
-]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

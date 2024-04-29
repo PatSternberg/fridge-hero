@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 export default function LogIn({ onBackClick }) {
 
   const navigate = useNavigate();
+  AxiosInstance.defaults.xsrfCookieName = 'csrftoken';
+  AxiosInstance.defaults.xsrfHeaderName = 'X-CSRFToken';
 
   // Set default values for submitted information
   const defaultValues = {
