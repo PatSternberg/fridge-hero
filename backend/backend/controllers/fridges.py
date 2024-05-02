@@ -233,25 +233,28 @@ def get_recipes(request):
     response = requests.get(url)
     recipes_list = response.json()
 
-    formatted_recipes = []
-
     for recipe_data in recipes_list:
-
-        if 'image' in recipe_data:
-            image_url = recipe_data["image"]
-        else: 
-            #  Handle the case where 'image' key is missing
-            image_url = "Image not available"
 
         ingredients = [ingredient["original"] for ingredient in recipe_data.get("extendedIngredients", [])]
 
-        formatted_recipe = {
+        formatted_recipes = []
+
+        if 'image' in recipe_data:
+            formatted_recipe = {
             "title": recipe_data["title"],
             "image": recipe_data["image"],
             "instructions": recipe_data["analyzedInstructions"],
             "ingredients": ingredients
-        }
-        formatted_recipes.append(formatted_recipe)
+            }
+            formatted_recipes.append(formatted_recipe)
+        else:
+            formatted_recipe = {
+            "title": recipe_data["title"],
+            "instructions": recipe_data["analyzedInstructions"],
+            "ingredients": ingredients
+            }
+            formatted_recipes.append(formatted_recipe)
+
     # print(len(formatted_recipes))
     print(json.dumps(formatted_recipes, indent=4))
 
