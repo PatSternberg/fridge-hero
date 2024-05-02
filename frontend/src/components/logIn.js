@@ -45,7 +45,11 @@ export default function LogIn({ onBackClick }) {
           }
       )})
       .catch((error) => {// Handle error if POST request fails
+        if (error.response && error.response.status === 401) {
+          setErrorMessage('Invalid email or password');
+        } else {
         console.error('Error:', error);
+        }
       });
     } catch (error) {
       console.log('Error logging in:', error.message);
