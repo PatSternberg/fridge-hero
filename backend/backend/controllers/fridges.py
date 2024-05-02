@@ -232,12 +232,12 @@ def get_recipes(request):
     url = f'https://api.spoonacular.com/recipes/informationBulk?ids={recipe_ids}&apiKey={api_key}'
     response = requests.get(url)
     recipes_list = response.json()
+    
+    formatted_recipes = []
 
     for recipe_data in recipes_list:
 
         ingredients = [ingredient["original"] for ingredient in recipe_data.get("extendedIngredients", [])]
-
-        formatted_recipes = []
 
         if 'image' in recipe_data:
             formatted_recipe = {
